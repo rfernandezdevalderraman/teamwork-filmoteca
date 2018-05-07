@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<math.h>
-#include<math.h>
 
 typedef struct{
 	char titulo[50];
@@ -17,20 +16,21 @@ void registrapeli(pelicula peli);
 int main()
 {
 	FILE *pvideoteca;
-	int a, error;// a sirve para el switch
+	char a; // a para el switch
+	int error;
 	pelicula vcatalogo[100];
 	do
 	{
-		printf("Que desea hacer: 1.Registar, 2.Buscar\n");
-		scanf("%d",&a);
+		printf("Que desea hacer: b;Registar, c;Buscar\n");
+		scanf("%c",&a);
 		switch (a)
 			{
-				case 'a==1':
-					pvideoteca=fopen("Videoteca","a");
+				case 'b':
+					pvideoteca=fopen("Videoteca.txt","w");
 					registrapeli(vcatalogo[0]);
 					error=1;
 					break;
-				case 'a==2':
+				case 'c':
 					//tatata
 					error=1;
 					break;
@@ -41,12 +41,16 @@ int main()
 			}
 	}while(error<0);
 }
+
 void registrapeli(pelicula peli)
-{
+{FILE *pvideoteca;
 		printf("Titulo de la pelicula:\n");
 					scanf("%s",&peli.titulo);
+					fprintf(pvideoteca, " %c \n", peli.titulo);
 					printf("Year en el que se estreno la peli:\n");
 					scanf("%d",&peli.year);
+					fprintf(pvideoteca, " %d \n", peli.year);
 					printf("Nota de la pelicula:\n");
 					scanf("%.2f",&peli.nota);
+					fprintf(pvideoteca, " %.2f \n", peli.nota);
 }
